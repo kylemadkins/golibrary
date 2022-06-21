@@ -32,7 +32,7 @@ type Book struct {
 }
 
 type Library struct {
-  books []*Book
+  books []Book
 }
 
 func displayCatalog(lib *Library) {
@@ -70,10 +70,10 @@ func main() {
   tcitr := Book{id: 1, title: "The Catcher in the Rye"}
   tgg := Book{id: 2, title: "The Great Gatsby"}
   md := Book{id: 3, title: "Moby Dick"}
-  lib := Library{[]*Book{&tcitr, &tgg, &md}}
+  lib := Library{[]Book{tcitr, tgg, md}}
   displayCatalog(&lib)
-  checkout(&lib, lib.books[0])
-  checkout(&lib, lib.books[0])
-  ret(&lib, lib.books[1])
-  ret(&lib, lib.books[0])
+  checkout(&lib, &lib.books[0])
+  checkout(&lib, &lib.books[0])
+  ret(&lib, &lib.books[1])
+  ret(&lib, &lib.books[0])
 }
